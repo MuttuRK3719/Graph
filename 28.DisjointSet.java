@@ -29,6 +29,19 @@ class DisjointSet {
             rank[vLPa]++;
         }
     }
+    void unionBySize(int u,int v){
+        int ulPa_u=findUPar(u);
+        int ulPa_v=findUPar(v);
+        if(ulPa_u==ulPa_v) return ;
+        else if(ulPa_u<ulPa_v){
+            parent[ulPa_u]=ulPa_v;
+            size[ulPa_v]+=size[ulPa_u];
+        }
+        else {
+            parent[ulPa_v]=ulPa_u;
+            size[ulPa_u]+=size[ulPa_v];
+        }
+    }
     public static void main(String[] args) {
          DisjointSet d=new DisjointSet(7);
         d.unionByRank(1,2);
